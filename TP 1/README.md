@@ -1,5 +1,3 @@
-Tp 1
-
 🌞 Affichez les infos des cartes réseau de votre PC
 - nom, adresse MAC et adresse IP de l'interface WiFi
 -> Interface Wifi : 10-B1-DF-75-D5-2F / IP : 10.33.48.135

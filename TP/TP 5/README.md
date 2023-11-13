@@ -5,34 +5,34 @@
 🌞 **Déterminez, pour ces 5 applications, si c'est du TCP ou de l'UDP**
 
 - **Discord** UDP  
-ip local: 10.33.70.251, port local: 59419  
-ip server: 66.22.197.57, port server: 50017  
+ip local: 10.33.70.251, port local: 62608  
+ip server: 66.22.197.143, port server: 50006  
 
---> Voir [ce fichier pcapng]()
+--> Voir [ce fichier pcapng](tp5_trame1.pcapng)
 
 - **Osu** TCP  
-ip local: 10.33.70.251, port local: 51989  
-ip server: 172.67.14.100, port server: 443  
+ip local: 10.33.70.251, port local: 7680  
+ip server: 10.33.73.120, port server: 52965  
 
---> Voir [ce fichier pcapng]()
+--> Voir [ce fichier pcapng](tp5_trame2.pcapng)
 
 - **Youtube** UDP  
-ip local: 10.33.70.251, prot local: 58343  
-ip server: 91.68.245.15, port server: 443  
+ip local: 10.33.70.251, prot local: 64541  
+ip server: 77.136.192.81, port server: 443  
 
---> Voir [ce fichier pcapng]()
+--> Voir [ce fichier pcapng](tp5_trame3.pcapng)
 
 - **Hollow Knight** TCP  
-ip local: 10.33.70.251, port local: 52210  
-ip server: 20.109.157.180, port server: 443  
+ip local: 10.33.70.251, port local: 51291  
+ip server: 162.247.241.2, port server: 443  
 
---> Voir [ce fichier pcapng]()
+--> Voir [ce fichier pcapng](tp5_trame4.pcapng)
 
 - **League Of Legends** UDP  
-ip local: 10.33.70.251, port local: 54503   
-ip server: 162.249.78.58, port server: 5364  
+ip local: 10.33.70.251, port local: 51791   
+ip server: 162.249.78.45, port server: 5151  
 
---> Voir [ce fichier pcapng]()
+--> Voir [ce fichier pcapng](tp5_trame5.pcapng)
 
 🌞 **Demandez l'avis à votre OS**
 ```powershell

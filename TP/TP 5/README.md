@@ -43,15 +43,15 @@ Connexions actives
   Proto  Adresse locale         Adresse distante            État
 
   # Discord
-  UDP    10.33.70.251:59419     66.22.197.57:50017          ESTABLISHED
+  UDP    10.33.70.251:62608     66.22.197.57:50006          ESTABLISHED
   # Osu
-  UDP    10.33.70.251:51989     172.67.14.100:https         ESTABLISHED
+  UDP    10.33.70.251:7680     172.67.14.100:52965         ESTABLISHED
   # Youtube
-  TCP    10.33.70.251:58343     91.68.245.15:https          ESTABLISHED
+  TCP    10.33.70.251:64541     91.68.245.15:https          ESTABLISHED
   # Hollow Knight
-  UDP    10.33.70.251:52210     20.109.157.180:https        ESTABLISHED
+  UDP    10.33.70.251:51291     20.109.157.180:https        ESTABLISHED
   # League Of Legends
-  UDP    10.33.70.251:54503     162.249.78.58:5364          ESTABLISHED
+  UDP    10.33.70.251:51791     162.249.78.58:5151          ESTABLISHED
   ```
 
 ## II. Setup Virtuel

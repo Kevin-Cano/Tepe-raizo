@@ -120,14 +120,14 @@ Chez marcel, ping john
 
 | ordre | type trame  | IP source           | MAC source                   | IP destination      | MAC destination              |
 | ----- | ----------- | ------------------- | ---------------------------- | ------------------- | ---------------------------- |
-| 1     | ???         | ???                 | ???                          | ???                 | ???                          |
-| 2     | ???         | ???                 | ???                          | ???                 | ???                          |
-| 3     | ???         | ???                 | ???                          | ???                 | ???                          |
-| 3     | ???         | ???                 | ???                          | ???                 | ???                          |
-| 4     | ???         | ???                 | ???                          | ???                 | ???                          |
-| 5     | ???         | ???                 | ???                          | ???                 | ???                          |
-| 6     | ???         | ???                 | ???                          | ???                 | ???                          |
-| 6     | ???         | ???                 | ???                          | ???                 | ???                          |
+| 1     | Requête ARP | x                   | `john`    `08:00:27:ba:41:1e`| x                   | Broadcast    `FF:FF:FF:FF:FF`|
+| 2     | Réponse ARP | x                   | `routeur` `08:00:27:24:01:45`| x                   | `john`    `08:00:27:ba:41:1e`|
+| 3     | Ping        | `john`   `10.3.1.11`| `john`    `08:00:27:ba:41:1e`| `marcel` `10.3.2.12`| `routeur` `08:00:27:24:01:45`|
+| 4     | Ping        | `john`   `10.3.1.11`| `routeur` `08:00:27:44:9e:b4`| `marcel` `10.3.2.12`| `marcel`  `08:00:27:c8:3f:c1`|
+| 5     | Requête ARP | x                   | `marcel`  `08:00:27:c8:3f:c1`| x                   | Broadcast    `FF:FF:FF:FF:FF`|
+| 6     | Réponse ARP | x                   | `routeur` `08:00:27:44:9e:b4`| x                   | `marcel`  `08:00:27:c8:3f:c1`|
+| 7     | Pong        | `marcel` `10.3.2.12`| `marcel`  `08:00:27:c8:3f:c1`| `john` `10.3.1.11`  | `routeur` `08:00:27:44:9e:b4`|
+| 8     | Pong        | `marcel` `10.3.2.12`| `routeur` `08:00:27:24:01:45`| `john` `10.3.1.11`  | `john`    `08:00:27:ba:41:1e`|
 
 ### Accès internet
 
@@ -136,31 +136,40 @@ Chez marcel, ping john
 Vérification de l'accès à Internet (depuis routeur) :
 
 ```powershell
-#commande + rep dans powershell
+[kevin@localhost ~]$ ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=116 time=15.1 ms
 ```
 
 Autoriser le routage des paquets sur internet :
 
 ```powershell
-#commande + rep dans powershell
-```
-
-Ajouter une route par defaut :
-
-```powershell
-#commande + rep dans powershell
+[kevin@localhost ~]$ sudo firewall-cmd --add-masquerade --permanent
+success
+[kevin@localhost ~]$ sudo firewall-cmd --reload
+success
 ```
 
 🌞 **Donnez un accès internet à vos machines - config clients**
 
 ```powershell
-#commandes + rep dans powershell
+[kevin@Marcel ~]$ sudo cat /etc/sysconfig/network-scripts/route-enp0s3
+10.3.1.0/24 via 10.3.2.254 dev enp0s3
+default via 10.3.2.254 dev enp0s3
+[kevin@Jhon ~]$  sudo cat /etc/sysconfig/network-scripts/route-enp0s3
+10.3.2.0/24 via 10.3.1.254 dev enp0s3
+default via 10.3.1.254 dev enp0s3
 ```
 
 Vérification de l'accès à Internet (depuis marcel et john) :
 
 ```powershell
-#commandes + rep dans powershell
+[kevin@Marcel ~]$ ping google.com
+PING google.com (142.250.201.174) 56(84) bytes of data.
+64 bytes from par21s23-in-f14.1e100.net (142.250.201.174): icmp_seq=1 ttl=115 time=15.8 ms
+[kevin@Jhon ~]$ ping google.com
+PING google.com (142.250.201.174) 56(84) bytes of data.
+64 bytes from par21s23-in-f14.1e100.net (142.250.201.174): icmp_seq=1 ttl=115 time=15.8 ms
 ```
 
 🌞Analyse de trames
